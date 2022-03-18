@@ -1,32 +1,67 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./styles/style.css" />
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <title>GuessTNumber</title>
-  </head>
-  <body>
-    <div class="container"> 
-      <div class="warning-wrapper">
-        <p class="warning-message">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./styles/style.css" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <title>GuessTNumber</title>
+</head>
+
+<body>
+  <div class="container screen-1">
+    <img src="assets/logo.png" />
+    </br></br>
+    <button class="button play-button">Play</button>
+  </div>
+
+  <div class="container screen-2">
+    <img src="assets/logo.png" />
+    <h3>Select Difficulty:</h3>
+    <button class="select-button" value="easy">Easy 😌</button>
+    </br>
+    <button class="select-button" value="normal">Normal 🙂</button>
+    </br>
+    <button class="select-button" value="hard">Hard 😠</button>
+    </br>
+    <button class="select-button" value="very-hard">Very Hard 😡</button>
+    </br>
+    <button class="select-button" value="impossible">Impossible 🤬</button>
+    </br>
+    <button class="back-button">Back</button>
+  </div>
+
+  <div class="warning-wrapper">
+    <p class="warning-message">
+  </div>
+  <div class="container screen-3">
+
+    <img src="assets/logo.png" />
+    <div class="stats-wrapper">
+      <div class="streak-wrapper">
+        <p>Score:</p>
+        <span class="streak"></span>
       </div>
-      <div class="streaks-wrapper">
-        <div class="streak-wrapper">
-          <p>Guess streak</p>
-          <span class="streak"></span>
-        </div>
-        <div class="max-streak-wrapper">
-          <p>Max streak</p>
-          <span class="max-streak"></span>
-        </div>
+      <div class="max-streak-wrapper">
+        <p>High Score:</p>
+        <span class="max-streak"></span>
       </div>
-      <img src="assets/logo.png" />
-      <input id="user-input" placeholder="Adivinhe o número" />
-      <button id="user-button">Adivinhar</button>
     </div>
-  </body>
-  <script src="./js/script.js"></script>
+    <div class="stats-wrapper">
+      <div class="chances-wrapper">
+        <p>Chances:</p>
+        <span class="chances"></span>
+      </div>
+    </div>
+    <input id="user-input" />
+    <button class="guess-button">Guess!</button>
+    </br>
+    <button class="back-button">Back</button>
+  </div>
+</body>
+<script src="./js/script.js"></script>
+
 </html>
