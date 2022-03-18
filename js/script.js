@@ -1,6 +1,6 @@
 
 $('#user-input').focus()
-$(document).on('click', '#user-button', compara);
+$(document).on('click', '#user-button', compare);
 
 let streak = 0;
 let maxStreak = 0;
@@ -10,7 +10,7 @@ function updateStreaks() {
   $(".max-streak").text(maxStreak);
 }
 
-function sorteia(max) {
+function randomNumber(max) {
   return Math.floor(Math.random() * max) + 1;
 }
 
@@ -23,12 +23,12 @@ function warning(message){
   }, 5000);
 }
 
-function compara() {
-  const numero = sorteia(10);
+function compare() {
+  const numero = randomNumber(10);
   const guess = $('#user-input').val();
 
-  if( !guess ){
-    warning('Você não preencheu o campo.');
+  if( !guess || typeof guess == 'string'){
+    warning('Valor inválido');
     return;
   }
 
