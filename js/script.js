@@ -79,7 +79,7 @@ function createGame() {
   generateNumber(range);
 
   renderRangeNumbers(range);
-
+  
   streak = 0;
   updateStats();
 
@@ -93,16 +93,40 @@ function createGame() {
 function updateStats() {
   $(".streak").text(streak);
   $(".max-streak").text(maxStreak);
-  $(".chances").text(chances);
+  // $(".chances").text(chances);
+  renderChancesPoints(chances);
+};
+
+function renderRangeNumbers(numbersRange) {
+  $( ".number-button" ).remove();
+  
+  for (i = 1; i <= numbersRange; i++) {
+    $(".numbers-wrapper").append(
+      `<button class="number-button" value="` + i + `">` + i + `</button>`
+    );
+  };
+
+  $('.number-button').click(compare);
+};
+
+function renderChancesPoints(chancesRange) {
+  $( ".chance-point" ).remove();
+
+  for (i = 1; i <= chancesRange; i++) {
+    $(".chances-wrapper").append(
+      `<i class="chance-point point-id-` + i + `">` + "❤️" + `</i>`
+    );
+  };
 };
 
 function warning(message, error) {
-  const guessButton = $('.guess-button');
+  // const guessButton = $('.guess-button');
+  const numberButton = $('.number-button');
   const warning = $('.warning-wrapper');
 
   getFocus();
-  guessButton.prop("disabled", true);
-  guessButton.css("background-color", "gray");
+  numberButton.prop("disabled", true);
+  numberButton.css("background-color", "gray");
 
   if (!error) {
     warning.css("background-color", "green");
@@ -115,8 +139,8 @@ function warning(message, error) {
 
   setTimeout(function () {
     warning.fadeOut();
-    guessButton.css("background-color", "#00ced1");
-    guessButton.prop("disabled", false);
+    numberButton.css("background-color", "#00ced1");
+    numberButton.prop("disabled", false);
   }, 2000);
 };
 
@@ -158,15 +182,3 @@ function compare() {
   generateNumber(range);
   updateStats();
 };
-
-function renderRangeNumbers(range) {
-  $( ".number-button" ).remove();
-
-  for (i = 1; i <= range; i++) {
-    $(".numbers-wrapper").append(
-      `<button class="number-button" value="` + i + `">` + i + `</button>`
-    );
-  }
-
-  $('.number-button').click(compare);
-}
