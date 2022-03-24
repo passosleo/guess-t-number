@@ -72,3 +72,8 @@ body {
   padding: 8px;
   margin: 16px;
 }
+
+.number-button {
+  width: 40px !important;
+  margin: 5px;
+}

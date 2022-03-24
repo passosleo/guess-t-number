@@ -4,6 +4,7 @@ let streak = 0;
 let maxStreak = 0;
 let chances = 0;
 
+// $('.screen-1').hide();
 $('.screen-2').hide();
 $('.screen-3').hide();
 
@@ -17,13 +18,12 @@ $('.back-button').click({
 
 $('.select-button').click(createGame);
 
-$('.guess-button').click(compare);
+// $('.guess-button').click(compare);
 
 function getFocus() {
   $('#user-input').val('');
   $('#user-input').focus();
 };
-
 
 function changeScreen(event) {
   $('.screen-' + screenNumber).fadeOut();
@@ -45,7 +45,7 @@ function changeScreen(event) {
 
 function generateNumber(max) {
   gameNumber = Math.floor(Math.random() * max) + 1;
-  console.log("cheat:",gameNumber);
+  console.log("cheat:", gameNumber);
 };
 
 function createGame() {
@@ -74,10 +74,13 @@ function createGame() {
       range = 10;
       break;
   };
-  
-  console.log("range: ",range)
 
+  console.log("range: ", range)
   generateNumber(range);
+
+  renderRangeNumbers(range);
+
+  streak = 0;
   updateStats();
 
   changeScreen({
@@ -93,11 +96,11 @@ function updateStats() {
   $(".chances").text(chances);
 };
 
-
 function warning(message, error) {
   const guessButton = $('.guess-button');
   const warning = $('.warning-wrapper');
 
+  getFocus();
   guessButton.prop("disabled", true);
   guessButton.css("background-color", "gray");
 
@@ -114,12 +117,13 @@ function warning(message, error) {
     warning.fadeOut();
     guessButton.css("background-color", "#00ced1");
     guessButton.prop("disabled", false);
-    getFocus();
   }, 2000);
 };
 
 function compare() {
-  const guess = parseInt($('#user-input').val());
+  // const guess = parseInt($('#user-input').val());
+  const guess = parseInt($(this).attr("value"));
+  console.log("guess:",guess)
 
   if (!guess || guess == NaN) {
     warning('Valor inválido', true);
@@ -128,13 +132,11 @@ function compare() {
 
   if (guess == gameNumber) {
     warning("Você acertou! Eu estava pensando no " + gameNumber, false);
-    
+
     streak++;
     if (streak > maxStreak) {
       maxStreak = streak;
     };
-
-    generateNumber(range);
   } else {
     warning("Você errou!", true);
 
@@ -153,5 +155,18 @@ function compare() {
       }, 1500);
     };
   };
+  generateNumber(range);
   updateStats();
 };
+
+function renderRangeNumbers(range) {
+  $( ".number-button" ).remove();
+
+  for (i = 1; i <= range; i++) {
+    $(".numbers-wrapper").append(
+      `<button class="number-button" value="` + i + `">` + i + `</button>`
+    );
+  }
+
+  $('.number-button').click(compare);
+}
