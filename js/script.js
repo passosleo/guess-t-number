@@ -18,13 +18,6 @@ $('.back-button').click({
 
 $('.select-button').click(createGame);
 
-// $('.guess-button').click(compare);
-
-function getFocus() {
-  $('#user-input').val('');
-  $('#user-input').focus();
-};
-
 function changeScreen(event) {
   $('.screen-' + screenNumber).fadeOut();
 
@@ -36,10 +29,6 @@ function changeScreen(event) {
 
   setTimeout(function () {
     $('.screen-' + screenNumber).fadeIn();
-
-    if (screenNumber == 3) {
-      getFocus()
-    }
   }, 500);
 };
 
@@ -114,17 +103,15 @@ function renderChancesPoints(chancesRange) {
 
   for (i = 1; i <= chancesRange; i++) {
     $(".chances-wrapper").append(
-      `<i class="chance-point point-id-` + i + `">` + "❤️" + `</i>`
+      `<i class="chance-point">` + "❤️" + `</i>`
     );
   };
 };
 
 function warning(message, error) {
-  // const guessButton = $('.guess-button');
   const numberButton = $('.number-button');
   const warning = $('.warning-wrapper');
 
-  getFocus();
   numberButton.prop("disabled", true);
   numberButton.css("background-color", "gray");
 
@@ -139,13 +126,12 @@ function warning(message, error) {
 
   setTimeout(function () {
     warning.fadeOut();
-    numberButton.css("background-color", "#00ced1");
+    numberButton.css("background-color", "#365673");
     numberButton.prop("disabled", false);
   }, 2000);
 };
 
 function compare() {
-  // const guess = parseInt($('#user-input').val());
   const guess = parseInt($(this).attr("value"));
   console.log("guess:",guess)
 

@@ -1,12 +1,29 @@
 body {
   font-family: 'Indie Flower', cursive;
   height: 100vh;
-  background-color: 	#a3b5de;
+  color: #365673;
+  background-color: #a3b5de;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+h1 {
+  font-size: 2.8rem;
+}
+
+body, h1, p {
   margin: 0;
+}
+
+p, span {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.flex {
+  display: flex;
 }
 
 .container {
@@ -25,11 +42,13 @@ body {
 button {
   font-family: 'Indie Flower', cursive;
   font-size: 1.2rem;
+  font-weight: bold;
   width: 300px;
   border: none;
   border-radius: 12px;
   cursor: pointer;
   color: #ffffff;
+  transition: 200ms;
 }
 
 button:hover {
@@ -38,15 +57,32 @@ button:hover {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-.play-button {
-  height: 50px;
-  background: 	#365673;
-  font-size: 1.8rem;
+button:active {
   transition: 200ms;
+  transform: scale(1);
+  opacity: 0.8;
+}
+
+.play-button {
+  height: 40px;
+  background: 	#365673;
+  font-size: 1.4rem;
+  transition: 200ms;
+  margin-top: 24px;
+}
+
+.back-button {
+  align-self: flex-start;
+  width: 70px;
+  height: 35px;
+  background: #365673;
 }
 
 .select-button{
   height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin: 6px 0;
 }
 
@@ -69,53 +105,47 @@ button:hover {
   background: #062847;
 }
 
-.back-button {
-  margin-top: 24px;
-  align-self: flex-start;
-  width: 70px;
-  height: 35px;
-  background: #365673;
-}
-/* .container button {
-  width: 30vh;
-  height: 35px;
-  border-radius: 5px;
-  background-color: #00ced1;
-  border: none;
-  color: #fff;
-  font-size: 16px;
-  cursor: pointer;
-  transition: 200ms;
-} */
-
-
-
-.container img {
-  width: 300px;
-  margin-bottom: 16px;
-}
-
-.stats-wrapper {
-  display: flex;
-  justify-content: space-between;
-  width: 35vh;
-  font-weight: bold;
-}
-
-.stats-wrapper p {
-  display: inline-block;
-}
-
-.warning-wrapper {
-  position: absolute;
-  top: 0;
-  color: white;
-  border-radius: 12px;
-  padding: 8px;
-  margin: 16px;
+.select-button span {
+  width: 90px;
 }
 
 .number-button {
-  width: 40px !important;
+  width: 45px;
+  height: 45px;
   margin: 5px;
+  font-size: 1.4rem;
+  background: #365673;
+  transition: 250ms;
+}
+
+.chances-wrapper {
+  margin: 18px 0;
+}
+
+.numbers-wrapper {
+  max-width: 300px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.streaks-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 24px;
+}
+
+.streaks-wrapper span {
+  margin-left: 6px;
+}
+.warning-wrapper {
+  position: absolute;
+  top: 0;
+  font-size: 1.8;
+  color: #ffffff;
+  border-radius: 12px;
+  padding: 8px;
+  margin: 16px;
 }
