@@ -33,8 +33,7 @@ function changeScreen(event) {
 };
 
 function generateNumber(max) {
-  gameNumber = Math.floor(Math.random() * max) + 1;
-  console.log("cheat:", gameNumber);
+  return Math.floor(Math.random() * max) + 1;
 };
 
 function createGame() {
@@ -64,8 +63,7 @@ function createGame() {
       break;
   };
 
-  console.log("range: ", range)
-  generateNumber(range);
+  gameNumber = generateNumber(range);
 
   renderRangeNumbers(range);
   
@@ -82,17 +80,25 @@ function createGame() {
 function updateStats() {
   $(".streak").text(streak);
   $(".max-streak").text(maxStreak);
-  // $(".chances").text(chances);
   renderChancesPoints(chances);
 };
+
+const colors = {
+  1: '#6fa8dc',
+  2: '#2c73b3',
+  3: '#0a4c87',
+  4: '#073763',
+  5: '#062847'
+}
 
 function renderRangeNumbers(numbersRange) {
   $( ".number-button" ).remove();
   
   for (i = 1; i <= numbersRange; i++) {
     $(".numbers-wrapper").append(
-      `<button class="number-button" value="` + i + `">` + i + `</button>`
+      `<button class="number-button color-` + i + `" value="` + i + `">` + i + `</button>`
     );
+    $(".color-" + i).css("background-color", colors[generateNumber(5)])
   };
 
   $('.number-button').click(compare);
@@ -103,7 +109,7 @@ function renderChancesPoints(chancesRange) {
 
   for (i = 1; i <= chancesRange; i++) {
     $(".chances-wrapper").append(
-      `<i class="chance-point">` + "❤️" + `</i>`
+      `<img class="chance-point" src="../images/heart.png" />`
     );
   };
 };
@@ -113,7 +119,7 @@ function warning(message, error) {
   const warning = $('.warning-wrapper');
 
   numberButton.prop("disabled", true);
-  numberButton.css("background-color", "gray");
+  numberButton.css("opacity", 0.5);
 
   if (!error) {
     warning.css("background-color", "green");
@@ -126,8 +132,9 @@ function warning(message, error) {
 
   setTimeout(function () {
     warning.fadeOut();
-    numberButton.css("background-color", "#365673");
+    numberButton.css("opacity", 1);
     numberButton.prop("disabled", false);
+    renderRangeNumbers(range);
   }, 2000);
 };
 
@@ -141,14 +148,14 @@ function compare() {
   }
 
   if (guess == gameNumber) {
-    warning("Você acertou! Eu estava pensando no " + gameNumber, false);
+    warning("Right answer! I was thinking about " + gameNumber, false);
 
     streak++;
     if (streak > maxStreak) {
       maxStreak = streak;
     };
   } else {
-    warning("Você errou!", true);
+    warning("You missed!", true);
 
     streak = 0;
 
@@ -165,6 +172,6 @@ function compare() {
       }, 1500);
     };
   };
-  generateNumber(range);
+  gameNumber = generateNumber(range);
   updateStats();
 };
