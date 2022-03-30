@@ -109,7 +109,7 @@ function renderChancesPoints(chancesRange) {
 
   for (i = 1; i <= chancesRange; i++) {
     $(".chances-wrapper").append(
-      `<img class="chance-point" src="../images/heart.png" />`
+      `<img class="chance-point" src="./images/heart.png" />`
     );
   };
 };
