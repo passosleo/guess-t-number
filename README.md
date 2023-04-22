@@ -1,2 +1,2 @@
 # guess-t-number
-Jogo para adivinhar números sorteados randomicamente com sistema de dificuldade.
+Javascript game to guess randomly drawn numbers with difficulty system.
