@@ -10,3 +10,6 @@ In this game you have to guess the correct number generated on each round. The a
 * CSS
 * Javascript
 * jQuery
+---
+➡️  **[Click here to play!](https://passosleo.github.io/guess-t-number/)**
+
